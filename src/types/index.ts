@@ -13,6 +13,7 @@ export type Products = {
     best_deal: boolean;
 }
 export type Categories = {
+    id: number;
     name: string;
 }
 export type Brands = {

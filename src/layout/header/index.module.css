@@ -1,0 +1,8 @@
+.buttonHover * {
+  transition: 0.2s;
+}
+
+.buttonHover:hover .buttonText,
+.buttonHover:hover .buttonIcon {
+  color: #fa8232;
+}
