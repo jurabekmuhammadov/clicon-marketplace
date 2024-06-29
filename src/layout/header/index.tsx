@@ -14,7 +14,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <header className=''>
-            <div id="black-friday" className={`bg-black py-2 md:py-13 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
+            <div id="black-friday" className={`bg-black px-3 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
                 <div className="container mx-auto flex justify-between items-center relative">
                     <Link href="/" className='flex items-center gap-3 justify-center w-14 h-7 min-[400px]:h-8 sm:w-16 sm:h-9 md:w-18 md:h-10'>
                         <Image src="/icons/black.jpg" alt='BLACK FRIDAY' width={80} height={0} className='object-cover' />
@@ -26,11 +26,11 @@ const Header = () => {
                         <span className='text-white text-base sm:text-xl lg:text-2xl font-semibold'>OFF</span>
                     </div>
                     <Button />
-                    <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='hidden md:block absolute bg-gray-400 bg-opacity-50 rounded-sm hover:bg-opacity-60 md:-right-10 2xl:-right-40'>
+                    <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='hidden lg:block absolute bg-gray-400 bg-opacity-50 rounded-sm hover:bg-opacity-60 md:-right-10 2xl:-right-40'>
                         <BiX className='text-white w-6 h-6' /> { }
                     </button>
                 </div>
-                <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center md:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
+                <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center lg:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
                     <BiX className='text-white w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 sm:w-7 sm:h-7' /> { }
                 </button>
             </div>
@@ -82,13 +82,13 @@ const Header = () => {
 
                     <div className='hidden min-[500px]:flex items-center relative w-1/2'>
                         <input type="text" placeholder='Search for anything...' className='py-1.5 px-3 md:py-2 md:px-4 lg:py-3 lg:px-5 w-full outline-none rounded-sm border-2 border-white focus:border-2 focus:border-secondary text-sm md:text-base' />
-                        <BiSearch className='absolute right-4 lg:right-5 w-5 h-5 lg:w-6 lg:h-6' />
+                        <BiSearch className='text-gray-500 absolute right-4 lg:right-5 w-5 h-5 lg:w-6 lg:h-6 transition' />
                     </div>
 
                     <div className='flex justify-between items-center gap-4 lg:gap-6 max-[500px]:fixed max-[500px]:w-screen max-[500px]:left-0 max-[500px]:right-0 max-[500px]:bottom-0 max-[500px]:px-3 max-[500px]:pb-2 max-[500px]:pt-3 max-[400px]:pb-1 max-[500px]:bg-white max-[500px]:border-t min-[500px]:static'>
                         <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1 transition`}>
                             <Search className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 text-gray-500 min-[500px]:text-white`} />
-                            <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Categories</span>
+                            <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Search</span>
                         </button>
                         <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 transition`}>
                             <ShoppingCart className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
@@ -99,6 +99,11 @@ const Header = () => {
                             <Heart className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
                             {/* <span className='absolute -top-2 right-2 min-[500px]:-right-2 border min-[400px]:border-2 border-gray-500 min-[500px]:border-primary rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary'>2</span> */}
                             <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Wishlist</span>
+                        </button>
+                        <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1 transition`}>
+                            <Repeat className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
+                            {/* <span className='absolute -top-2 right-2 min-[500px]:-right-2 border min-[400px]:border-2 border-gray-500 min-[500px]:border-primary rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary'>2</span> */}
+                            <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Compare</span>
                         </button>
                         <button className={`${moduleStyle.buttonHover} flex flex-col items-center max-[500px]:gap-1 transition`}>
                             <User className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
@@ -115,7 +120,7 @@ const Header = () => {
                     </button>
                 </div>
             </div>
-            
+
             <div className='min-[500px]:py-4 min-[500px]:px-3 min-[500px]:border-b min-[500px]:border-gray-300'>
                 <div className="container mx-auto flex items-center justify-between gap-4">
                     <div className='flex items-center gap-6 w-full min-[640px]:w-auto'>
@@ -137,7 +142,7 @@ const Header = () => {
                                     <span>About Us</span>
                                 </Link>
                             </li>
-                            <li className=''>
+                            <li className='hidden min-[500px]:block'>
                                 <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray-600 font-medium transition hover:text-secondary'>
                                     <Repeat className='w-5 h-5 md:w-6 md:h-6' />
                                     <span>Compare</span>

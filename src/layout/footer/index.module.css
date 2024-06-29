@@ -1,0 +1,41 @@
+.menu__link {
+  position: relative;
+  transition:0.4s;
+}
+
+.menu__link::before {
+  content: "";
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #facc15;
+  position: absolute;
+  bottom: -0.30rem;
+  left: 50%;
+  transition: width 0.4s, left 0.4s;
+}
+
+.menu__link:hover::before {
+  width: 100%;
+  left: 0;
+}
+.menu__link:hover {
+    color: white;
+}
+
+.browse__all {
+    transition: 0.3s;
+}
+.arrow__right {
+    transition: 0.3s;
+}
+.browse__all:hover .arrow__right {
+    transform: translateX(6px);
+}
+
+@media (max-width: 500px) {
+  .menu__link::before {
+    bottom: -0.20rem;
+    height: 1px;
+  }
+}

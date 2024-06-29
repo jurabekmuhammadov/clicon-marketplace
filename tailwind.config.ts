@@ -14,6 +14,7 @@ const config: Config = {
         secondary: "#FA8232",
         tertiary: "#facc15",
         quaternary: "#2DA5F3",
+        dark: "#191C1F",
         danger: "#EE5858",
         success: "#2DB224",
       },
