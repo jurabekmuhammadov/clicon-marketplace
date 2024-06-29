@@ -14,10 +14,10 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <header className=''>
-            <div id="black-friday" className={`bg-black px-3 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
+            <div id="black-friday" className={`bg-dark px-3 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
                 <div className="container mx-auto flex justify-between items-center relative">
                     <Link href="/" className='flex items-center gap-3 justify-center w-14 h-7 min-[400px]:h-8 sm:w-16 sm:h-9 md:w-18 md:h-10'>
-                        <Image src="/icons/black.jpg" alt='BLACK FRIDAY' width={80} height={0} className='object-cover' />
+                        <Image src="/icons/black.png" alt='BLACK FRIDAY' width={80} height={0} className='object-cover' />
                     </Link>
 
                     <div className='flex items-center gap-1'>
@@ -80,32 +80,35 @@ const Header = () => {
                         <span className='uppercase text-white font-bold text-xl min-[400px]:text-2xl md:text-3xl lg:text-4xl'>clicon</span>
                     </Link>
 
-                    <div className='hidden min-[500px]:flex items-center relative w-1/2'>
-                        <input type="text" placeholder='Search for anything...' className='py-1.5 px-3 md:py-2 md:px-4 lg:py-3 lg:px-5 w-full outline-none rounded-sm border-2 border-white focus:border-2 focus:border-secondary text-sm md:text-base' />
-                        <BiSearch className='text-gray-500 absolute right-4 lg:right-5 w-5 h-5 lg:w-6 lg:h-6 transition' />
-                    </div>
+                    <form className='hidden min-[500px]:flex items-center relative w-1/2'>
+                        <input type="text" placeholder='Search for anything...' className='py-1.5 px-3 md:py-2 md:px-4 lg:py-3 lg:px-5 w-full outline-none rounded-md border-2 border-white focus:border-2 focus:border-secondary text-sm md:text-base' />
+                        <button type='submit' className='flex items-center justify-center bg-secondary p-0.5 lg:p-1 rounded-md text-white absolute right-2 md:right-3 lg:right-4 transition'>
+                            { }
+                            <BiSearch className='w-5 h-5 lg:w-6 lg:h-6 ' />
+                        </button>
+                    </form>
 
                     <div className='flex justify-between items-center gap-4 lg:gap-6 max-[500px]:fixed max-[500px]:w-screen max-[500px]:left-0 max-[500px]:right-0 max-[500px]:bottom-0 max-[500px]:px-3 max-[500px]:pb-2 max-[500px]:pt-3 max-[400px]:pb-1 max-[500px]:bg-white max-[500px]:border-t min-[500px]:static'>
-                        <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1 transition`}>
+                        <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1 `}>
                             <Search className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 text-gray-500 min-[500px]:text-white`} />
                             <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Search</span>
                         </button>
-                        <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 transition`}>
+                        <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 `}>
                             <ShoppingCart className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
                             {/* <span className='absolute -top-2 -right-2 border min-[400px]:border-2 border-gray-500 min-[500px]:border-primary rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary'>2</span> */}
                             <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Cart</span>
                         </button>
-                        <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 transition`}>
+                        <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 `}>
                             <Heart className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
                             {/* <span className='absolute -top-2 right-2 min-[500px]:-right-2 border min-[400px]:border-2 border-gray-500 min-[500px]:border-primary rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary'>2</span> */}
                             <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Wishlist</span>
                         </button>
-                        <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1 transition`}>
+                        <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1`}>
                             <Repeat className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
                             {/* <span className='absolute -top-2 right-2 min-[500px]:-right-2 border min-[400px]:border-2 border-gray-500 min-[500px]:border-primary rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary'>2</span> */}
                             <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Compare</span>
                         </button>
-                        <button className={`${moduleStyle.buttonHover} flex flex-col items-center max-[500px]:gap-1 transition`}>
+                        <button className={`${moduleStyle.buttonHover} flex flex-col items-center max-[500px]:gap-1 `}>
                             <User className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-500 min-[500px]:text-white`} />
                             <span className={`${moduleStyle.buttonText} text-gray-500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Account</span>
                         </button>
@@ -135,7 +138,7 @@ const Header = () => {
                             </select>
                             <ChevronsUpDown className='absolute top-3 right-1 w-5 h-5' />
                         </div>
-                        <ul className={`${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 top-[173px] min-[400px]:top-[205px] max-[500px]:p-3 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray-300 max-[500px]:shadow-md max-[500px]:shadow-gray-300 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static`}>
+                        <ul className={`${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 top-[173px] min-[400px]:top-[205px] max-[500px]:p-3 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray-400 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static`}>
                             <li className=''>
                                 <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray-600 font-medium transition hover:text-secondary'>
                                     <Info className='w-5 h-5 md:w-6 md:h-6' />
