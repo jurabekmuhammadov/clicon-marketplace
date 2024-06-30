@@ -6,7 +6,7 @@ import moduleStyles from "./index.module.css"
 
 const Footer = () => {
     return (
-        <footer className='bg-dark pt-10 min-[400px]:pt-16 lg:pt-20 flex flex-col gap-10 min-[400px]:gap-16 lg:gap-20 mb-[57px] min-[400px]:mb-[69px] min-[500px]:mb-[0px]'>
+        <footer className='bg-gray900 pt-10 min-[400px]:pt-16 lg:pt-20 flex flex-col gap-10 min-[400px]:gap-16 lg:gap-20 mb-[57px] min-[400px]:mb-[69px] min-[500px]:mb-[0px]'>
             <div className="container mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:flex xl:gap-6 xl:justify-between">
 
                 <div className="flex flex-col items-center lg:items-start gap-6">
@@ -19,10 +19,10 @@ const Footer = () => {
 
                     <div className='flex flex-col gap-1.5 min-[400px]:gap-2 lg:gap-3 text-center lg:text-left'>
                         <div className='flex flex-row gap-2 items-center justify-center lg:justify-start lg:items-start lg:flex-col lg:gap-1'>
-                            <span className='text-gray-500 text-xs min-[400px]:text-sm sm:text-base'>Customer Supports:</span>
+                            <span className='text-gray500 text-xs min-[400px]:text-sm sm:text-base'>Customer Supports:</span>
                             <Link className='text-white text-xs min-[400px]:text-sm sm:text-lg hover:underline' href="tel:+998990990754">+998-99-099-07-54</Link>
                         </div>
-                        <p className='text-gray-500 font-medium text-xs min-[400px]:text-sm sm:text-base'>4517 Washington Ave. <br className='hidden lg:block'/> Manchester, Kentucky 39495</p>
+                        <p className='text-gray300 font-medium text-xs min-[400px]:text-sm sm:text-base'>4517 Washington Ave. <br className='hidden lg:block'/> Manchester, Kentucky 39495</p>
                         <Link className='text-white font-medium text-xs min-[400px]:text-sm sm:text-base hover:underline' href="https://clicon-marketplace.vercel.app">clicon-marketplace.vercel.app</Link>
                     </div>
                 </div>
@@ -32,32 +32,32 @@ const Footer = () => {
                         <h4 className='uppercase text-white text-sm min-[400px]:text-base md:text-lg'>TOP CATEGORIES</h4>
                         <ul className='flex flex-col gap-2 text-xs min-[400px]:text-sm sm:text-base'>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">
                                     <span>Computer & Laptop</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">
                                     <span>Smartphone</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">
                                     <span>Headphone</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">
                                     <span>Camera & Photo</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">
                                     <span>Watches & Accessories</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.browse__all} flex items-center gap-1 text-tertiary font-medium`} href="/">Browse All Products <ChevronRight className={`${moduleStyles.arrow__right} w-4 h-4 min-[400px]:w-5 min-[400px]:h-5`} /></Link>
+                                <Link className={`${moduleStyles.browse__all} flex items-center gap-1 text-warning500 font-medium`} href="/">Browse All Products <ChevronRight className={`${moduleStyles.arrow__right} w-4 h-4 min-[400px]:w-5 min-[400px]:h-5`} /></Link>
                             </li>
                         </ul>
                     </div>
@@ -65,22 +65,22 @@ const Footer = () => {
                         <h4 className='uppercase text-white text-sm min-[400px]:text-base md:text-lg'>QUICK LINKS</h4>
                         <ul className='flex flex-col gap-2 text-xs min-[400px]:text-sm sm:text-base'>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">About Us</Link>
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">About Us</Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">Blogs</Link>
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">Blogs</Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">Customer Support</Link>
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">Customer Support</Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">Shopping Cart</Link>
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">Shopping Cart</Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">Wishlist</Link>
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">Wishlist</Link>
                             </li>
                             <li>
-                                <Link className={`${moduleStyles.menu__link} text-gray-500 font-medium`} href="/">Compare</Link>
+                                <Link className={`${moduleStyles.menu__link} text-gray400 font-medium`} href="/">Compare</Link>
                             </li>
                         </ul>
                     </div>
@@ -109,24 +109,24 @@ const Footer = () => {
                 <div className='flex flex-col gap-3 min-[400px]:gap-4'>
                     <h4 className='uppercase text-white text-sm min-[400px]:text-base md:text-lg text-center lg:text-start'>POPULAR TAGS</h4>
                     <div className='grid grid-cols-3 gap-2'>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Game</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Iphone</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">TV</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Dell Laptops</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Macbook</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Samsung</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Speaker</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Power Bank</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Smart Watch</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">HP</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Xiaomi</Link>
-                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-zinc-600 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Microsoft    </Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Game</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Iphone</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">TV</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Dell Laptops</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Macbook</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Samsung</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Speaker</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Power Bank</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Smart Watch</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">HP</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Xiaomi</Link>
+                        <Link className='text-xs min-[400px]:text-sm sm:text-base border border-gray800 rounded-sm py-0.5 px-1.5 text-white text-center transition hover:border-white hover:bg-white hover:bg-opacity-10' href="/">Microsoft    </Link>
                     </div>
                 </div>
 
             </div>
-            <div className='px-3 py-3 sm:py-5 border-t border-gray-500 text-center'>
-                <p className='text-gray-500 text-xs min[400px]:text-sm sm:text-base'>Clicon - Online Markeplace © 2024. Created by <Link href="https://t.me/notjustdev">Jurabek M.</Link></p>
+            <div className='px-3 py-3 sm:py-5 border-t border-gray700 text-center'>
+                <p className='text-gray300 text-xs min[400px]:text-sm sm:text-base'>Clicon - Online Markeplace © 2024. Created by <Link href="https://t.me/notjustdev">Jurabek M.</Link></p>
             </div>
         </footer>
     );
