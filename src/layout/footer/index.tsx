@@ -7,7 +7,7 @@ import moduleStyles from "./index.module.css"
 const Footer = () => {
     return (
         <footer className='bg-gray900 pt-10 min-[400px]:pt-16 lg:pt-20 flex flex-col gap-10 min-[400px]:gap-16 lg:gap-20 mb-[57px] min-[400px]:mb-[69px] min-[500px]:mb-[0px]'>
-            <div className="container mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:flex xl:gap-6 xl:justify-between">
+            <div className="container mx-auto px-[10px] grid grid-cols-1 lg:grid-cols-2 gap-10 xl:flex xl:gap-6 xl:justify-between">
 
                 <div className="flex flex-col items-center lg:items-start gap-6">
                     <Link href="/" className='flex items-center gap-2'>
@@ -125,7 +125,7 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className='px-3 py-3 sm:py-5 border-t border-gray700 text-center'>
+            <div className='px-[10px] py-3 sm:py-5 border-t border-gray700 text-center'>
                 <p className='text-gray300 text-xs min[400px]:text-sm sm:text-base'>Clicon - Online Markeplace © 2024. Created by <Link href="https://t.me/notjustdev">Jurabek M.</Link></p>
             </div>
         </footer>

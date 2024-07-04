@@ -1,5 +1,4 @@
 "use client"
-import Button from '@/components/buttons';
 import { CATEGORIES } from '@/data/categories';
 import { ArrowRight, ChevronsUpDown, Headset, Heart, Info, Menu, PhoneCall, Repeat, ScrollText, Search, ShoppingCart, User, X } from 'lucide-react';
 import Image from 'next/image';
@@ -14,8 +13,8 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <header className=''>
-            <div id="black-friday" className={`bg-gray900 px-3 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
-                <div className="container mx-auto flex justify-between items-center relative">
+            <div id="black-friday" className={`z-50 bg-gray900 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
+                <div className="px-[10px] container mx-auto flex justify-between items-center relative">
                     <Link href="/" className='flex items-center gap-3 justify-center w-14 h-7 min-[400px]:h-8 sm:w-16 sm:h-9 md:w-18 md:h-10'>
                         <Image src="/icons/black.png" alt='BLACK FRIDAY' width={80} height={0} className='object-cover' />
                     </Link>
@@ -29,18 +28,18 @@ const Header = () => {
                         <span className='text-gray900 text-[10px] min-[400px]:text-xs sm:text-sm lg:text-base font-semibold uppercase'>shop now</span>
                         <ArrowRight className='w-4 h-4 md:w-5 md:h-5' />
                     </button>
-                    <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='hidden lg:block absolute bg-gray700 bg-opacity-50 rounded-sm hover:bg-opacity-70 md:-right-10 2xl:-right-40 transition'>
+                    <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='hidden xl:block absolute bg-gray700 bg-opacity-50 rounded-sm hover:bg-opacity-70 md:-right-10 2xl:-right-40 transition'>
                         <BiX className='text-white w-6 h-6' /> { }
                     </button>
                 </div>
-                <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center lg:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
+                <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center xl:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
                     <BiX className='text-white w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 sm:w-7 sm:h-7' /> { }
                 </button>
             </div>
 
-            <div className='bg-secondary700'>
-                <div className='border-b border-gray400 px-3'>
-                    <div className="container mx-auto flex flex-col gap-4 md:flex-row md:justify-between items-center py-2 min-[400px]:py-3 md:py-4">
+            <div className='bg-secondary700 z-50'>
+                <div className='border-b border-gray400'>
+                    <div className="px-[10px] container mx-auto flex flex-col gap-4 md:flex-row md:justify-between items-center py-2 min-[400px]:py-3 md:py-4">
                         <span className='text-white text-sm min-[400px]:text-base'>Welcome to Clicon Online Marketplace!</span>
                         <div className="w-full md:w-auto flex justify-between md:justify-normal items-center">
                             <div className="md:border-r md:border-gray400 flex items-center gap-3 pr-0 md:pr-6">
@@ -75,7 +74,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <div className='container mx-auto flex items-center justify-between px-3 py-3 min-[400px]:py-4 gap-4'>
+                <div className='px-[10px] container mx-auto flex items-center justify-between py-3 min-[400px]:py-4 gap-4'>
                     <Link href="/" className='flex items-center gap-2'>
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-7 h-7 min-[400px]:w-8 min-[400px]:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12'>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24ZM36 24C36 30.6274 30.6274 36 24 36C17.3726 36 12 30.6274 12 24C12 17.3726 17.3726 12 24 12C30.6274 12 36 17.3726 36 24ZM24 32C28.4183 32 32 28.4183 32 24C32 19.5817 28.4183 16 24 16C19.5817 16 16 19.5817 16 24C16 28.4183 19.5817 32 24 32Z" fill="white" />
@@ -91,7 +90,7 @@ const Header = () => {
                         </button>
                     </form>
 
-                    <div className='flex justify-between items-center gap-4 lg:gap-6 max-[500px]:fixed max-[500px]:w-screen max-[500px]:left-0 max-[500px]:right-0 max-[500px]:bottom-0 max-[500px]:px-3 max-[500px]:pb-2 max-[500px]:pt-3 max-[400px]:pb-1 max-[500px]:bg-white max-[500px]:border-t min-[500px]:static min-[500px]:z-10'>
+                    <div className='z-50 flex justify-between items-center gap-4 lg:gap-6 max-[500px]:fixed max-[500px]:w-screen max-[500px]:left-0 max-[500px]:right-0 max-[500px]:bottom-0 max-[500px]:px-[10px] max-[500px]:pb-2 max-[500px]:pt-3 max-[400px]:pb-1 max-[500px]:bg-white max-[500px]:border-t min-[500px]:static min-[500px]:z-10'>
                         <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1 `}>
                             <Search className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 text-gray500 min-[500px]:text-white`} />
                             <span className={`${moduleStyle.buttonText} text-gray500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Search</span>
@@ -127,8 +126,8 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className='min-[500px]:py-4 min-[500px]:px-3 min-[500px]:border-b min-[500px]:border-gray200'>
-                <div className="container mx-auto flex items-center justify-between gap-4">
+            <div className='min-[500px]:py-4 min-[500px]:border-b min-[500px]:border-gray200 z-50'>
+                <div className="px-[10px] container mx-auto flex items-center justify-between gap-4">
                     <div className='flex items-center gap-6 w-full min-[640px]:w-auto'>
                         <div className='relative hidden lg:block'>
                             <select name="category" id="category" className='bg-gray100 py-2 px-4 outline-none rounded-sm appearance-none'>
@@ -141,7 +140,7 @@ const Header = () => {
                             </select>
                             <ChevronsUpDown className='absolute top-3 right-1 w-5 h-5' />
                         </div>
-                        <ul className={`${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 top-[173px] min-[400px]:top-[205px] max-[500px]:p-3 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray100 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static min-[500px]:z-10`}>
+                        <ul className={`z-10 ${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 top-[173px] min-[400px]:top-[205px] max-[500px]:px-[10px] max-[500px]:py-4 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray100 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static`}>
                             <li className=''>
                                 <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
                                     <Info className='w-5 h-5 md:w-6 md:h-6' />
