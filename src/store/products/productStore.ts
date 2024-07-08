@@ -1,9 +1,9 @@
-import {create} from "zustand";
+import { create } from "zustand";
 import axios from "axios";
-import {Products} from "@/types";
+import { Product } from "@/types";
 
 interface ProductStore {
-    products: Products[];
+    products: Product[];
     loading: boolean;
     error: string | null;
     fetchProducts: () => Promise<void>;

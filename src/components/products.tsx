@@ -1,11 +1,10 @@
 "use client"
 
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import useProductStore from "@/store/products/productStore";
-import Image from "next/image";
 
 const Products = () => {
-    const {products, loading, error, fetchProducts} = useProductStore();
+    const { products, loading, error, fetchProducts } = useProductStore();
     useEffect(() => {
         fetchProducts();
     }, [fetchProducts]);

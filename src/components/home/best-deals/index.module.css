@@ -1,0 +1,8 @@
+.product_img .product_actions {
+    display: none;
+    
+}
+
+.product_img:hover .product_actions {
+    display: flex;
+}
