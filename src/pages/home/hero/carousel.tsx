@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { Autoplay, Navigation } from 'swiper/modules';
-import { ArrowRight, ChevronLeft, ChevronRight, ChevronRightCircle } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Carousel() {
 
@@ -74,7 +74,7 @@ export default function Carousel() {
                                 <p className='text-secondary500 uppercase font-medium text-xs md:text-sm xl:text-base'>To wear it is to love it.</p>
                             </div>
                             <h1 className='text-white text-2xl md:text-4xl xl:text-5xl font-medium mt-1 min-[400px]:mt-2'>Apple Watch Ultra 2</h1>
-                            <p className='text-white text-[11px] leading-4 min-[400px]:text-sm md:text-base xl:text-lg mt-2 min-[400px]:mt-4'>The most rugged and capable Apple Watch pushes the limits again. <br/> Featuring the all-new S9 SiP.</p>
+                            <p className='text-white text-[11px] leading-4 min-[400px]:text-sm md:text-base xl:text-lg mt-2 min-[400px]:mt-4'>The most rugged and capable Apple Watch pushes the limits again. <br /> Featuring the all-new S9 SiP.</p>
                             <button className="text-xs min-[400px]:text-sm md:text-base mt-4 min-[400px]:mt-6 flex items-center gap-1 min-[400px]:gap-2 xl:gap-3 px-3 min-[400px]:px-4 py-1.5 min-[400px]:py-2 md:px-6 md:py-3 xl:py-4 xl:px-8 bg-primary500 uppercase text-white font-semibold rounded-md transition hover:bg-primary400">
                                 shop now
                                 <ArrowRight className='text-white w-4 h-4 md:w-5 md:h-5 xl:w-6 xl:h-6' />

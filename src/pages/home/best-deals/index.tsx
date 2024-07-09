@@ -8,35 +8,10 @@ import useProductStore from '@/store/products/productStore'
 import { Product } from '@/types'
 import Image from 'next/image'
 import moduleStyle from "./index.module.css"
-import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa'
+import { StarRating } from '@/functions/star-rating'
+import { dealEndDate } from '@/data/deal-end-date'
+import { calculateDiscountedPrice } from '@/functions/discounted-price'
 
-const dealEndDate = new Date(2024, 11, 31);
-
-const StarRating = ({ rating }: { rating: number }) => {
-  const fullStars = Math.floor(rating);
-  const halfStars = rating % 1 !== 0 ? 1 : 0;
-  const emptyStars = 5 - fullStars - halfStars;
-
-  const renderStars = () => {
-    let stars = [];
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<FaStar key={`full-${i}`} color="#FFA500" className='w-3 h-3 sm:w-4 sm:h-4' />);
-    }
-    if (halfStars) {
-      stars.push(<FaStarHalfAlt key="half" color="#FFA500" className='w-3 h-3 sm:w-4 sm:h-4' />);
-    }
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<FaRegStar key={`empty-${i}`} color="#FFA500" className='w-3 h-3 sm:w-4 sm:h-4' />);
-    }
-    return stars;
-  };
-
-  return (
-    <div className='flex items-center gap-0.5'>
-      {renderStars()}
-    </div>
-  );
-};
 
 const BestDeals = () => {
   const [bestDeals, setBestDeals] = useState<Product[]>([])
@@ -57,14 +32,8 @@ const BestDeals = () => {
     return products.slice(0, numElements);
   };
 
-  function calculateDiscountedPrice(originalPrice: number, discountPercentage: number) {
-    const discountAmount = originalPrice * (discountPercentage / 100);
-    const discountedPrice = originalPrice - discountAmount;
-    return discountedPrice.toFixed(2);
-  }
-
   return (
-    <section className='flex flex-col gap-5 md:gap-8 mb-[72px]'>
+    <section id="bestdeals" className='flex flex-col gap-5 md:gap-8 mb-[72px]'>
 
       <div className='flex items-end min-[600px]:items-center justify-between'>
         <div className='flex min-[600px]:items-center flex-col min-[600px]:flex-row gap-1 min-[500px]:gap-2 min-[600px]:gap-4 md:gap-6'>
@@ -77,10 +46,142 @@ const BestDeals = () => {
         </Link>
       </div>
 
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-2 gap-2 min-[400px]:gap-3 lg:gap-4'>
-        {loading && <p className='text-9xl'>Loading...</p>}
-        {error && <p>{error}</p>}
+      {error && error}
+      {loading && (
+        // <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-2 gap-2 min-[400px]:gap-3 lg:gap-4'>
 
+        //   <div className="bg-white h-[782px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between col-start-1 col-end-2 row-start-1 row-end-3">
+        //     <div className="h-[370px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        //   <div className="bg-white h-[382px] rounded-md shadow-lg select-none p-4 flex flex-col justify-between">
+        //     <div className="h-[200px] rounded-md bg-gray-200 animate-pulse" ></div>
+        //     <div className='flex flex-col gap-1.5'>
+        //       <div className='h-5 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-3/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //       <div className='h-5 w-2/4 rounded-xl bg-gray-200 animate-pulse'></div>
+        //     </div>
+        //     <div className='flex items-center gap-1.5'>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-4/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //       <div className='w-1/6 bg-gray-200 h-9 rounded-sm animate-pulse'></div>
+        //     </div>
+        //   </div>
+        // </div>
+        <p className='text-3xl'>Loading...</p>
+      )}
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-2 gap-2 min-[400px]:gap-3 lg:gap-4'>
         <div className='col-start-1 col-end-2 row-start-1 row-end-3 border border-gray100 rounded-md hidden xl:block'>
 
           {
@@ -213,8 +314,8 @@ const BestDeals = () => {
 
           </div>
         ))}
-
       </div>
+
     </section>
   )
 }

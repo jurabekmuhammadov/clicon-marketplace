@@ -1,0 +1,1 @@
+export const dealEndDate = new Date(2024, 11, 31);

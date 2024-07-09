@@ -16,6 +16,7 @@ export type Product = {
 export type Categories = {
     id: number;
     name: string;
+    img: string;
 }
 export type Brands = {
     name: string;

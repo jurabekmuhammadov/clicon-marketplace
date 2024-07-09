@@ -5,7 +5,7 @@ import Carousel from './carousel'
 
 const Hero = () => {
     return (
-        <section className='mt-4 mb-10 sm:mt-8 sm:mb-20'>
+        <section id='hero' className='mt-4 mb-10 sm:mt-8 sm:mb-20'>
             <div className='grid grid-cols-4 lg:grid-cols-6 grid-rows-2 gap-3 sm:gap-4 md:gap-6'>
 
                 <div className="row-start-1 row-end-3 col-start-1 col-end-5">
