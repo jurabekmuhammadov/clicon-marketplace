@@ -1855,7 +1855,7 @@ export const PRODUCTS: Product[] = [
         ],
         description: "Camera: All-new Triple Primary Camera, 50 MP TrμePixel Custom GN2 Sensor + OIS, 48MP Sony IMX586 Ultra-wide Camera, 48MP Periscope 120x Telephoto Camera + OIS | 8K Across All Lenses | 20 MP Front Camera",
         price: 1267.00,
-        category: "Smartphone",
+        category: "Smartphones",
         star_rating: 5,
         feedbacks: 8763,
         brand: "Xiaomi",

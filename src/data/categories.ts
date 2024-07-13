@@ -19,7 +19,7 @@ export const CATEGORIES: Categories[] = [
     {
         id: 4,
         img: "/product-images/mobile-phones/iphone-15.jpg",
-        name: "Smartphone"
+        name: "Smartphones"
     },
     {
         id: 5,

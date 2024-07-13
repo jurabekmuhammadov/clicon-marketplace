@@ -1,5 +1,6 @@
 import BestDeals from "@/pages/home/best-deals";
 import ShopWithCategories from "@/pages/home/categories";
+import FeaturedProducts from "@/pages/home/featured";
 import Hero from "@/pages/home/hero";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <BestDeals />
       <ShopWithCategories />
+      <FeaturedProducts />
     </div>
   );
 }
