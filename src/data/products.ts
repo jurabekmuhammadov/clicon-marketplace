@@ -829,7 +829,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 47,
-        name: "Xiaomi Mi Computer Monitor Light Bar",
+        name: "Xiaomi Mi Computer Light Bar",
         images: [
             "/product-images/computer-accessories/acc-2.jpg",
             "/product-images/computer-accessories/acc-2-2.jpg",

@@ -1,5 +1,6 @@
 import BestDeals from "@/pages/home/best-deals";
 import ShopWithCategories from "@/pages/home/categories";
+import CompAccessories from "@/pages/home/comp-accessories";
 import FeaturedProducts from "@/pages/home/featured";
 import Hero from "@/pages/home/hero";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <BestDeals />
       <ShopWithCategories />
       <FeaturedProducts />
+      <CompAccessories />
     </div>
   );
 }
