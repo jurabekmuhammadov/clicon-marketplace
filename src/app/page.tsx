@@ -3,6 +3,7 @@ import ShopWithCategories from "@/pages/home/categories";
 import CompAccessories from "@/pages/home/comp-accessories";
 import FeaturedProducts from "@/pages/home/featured";
 import Hero from "@/pages/home/hero";
+import LatestNews from "@/pages/home/latest-news";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ShopWithCategories />
       <FeaturedProducts />
       <CompAccessories />
+      <LatestNews />
     </div>
   );
 }
