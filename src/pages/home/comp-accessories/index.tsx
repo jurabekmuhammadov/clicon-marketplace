@@ -115,8 +115,8 @@ const CompAccessories = () => {
     };
 
     return (
-        <section id='computer-accessories' className='mb-[72px]'>
-            <div className='flex flex-col 2xl:flex-row gap-6 mb-[72px]'>
+        <section id='computer-accessories' className='mb-10 min-[500px]:mb-14 sm:mb-16 md:mb-[72px]'>
+            <div className='flex flex-col 2xl:flex-row gap-6 mb-10 min-[500px]:mb-14 sm:mb-16 md:mb-[72px]'>
                 <div className='w-full 2xl:w-4/5'>
                     <div className='flex justify-between flex-col gap-3 lg:gap-0 lg:flex-row'>
                         <div className='flex items-center justify-between'>
@@ -189,7 +189,7 @@ const CompAccessories = () => {
                     </div>
                 </div>
             </div>
-            <div className='mb-[72px] flex items-center justify-between bg-primary100 px-4 py-6 sm:p-8 lg:py-10 lg:px-10 xl:py-0 xl:px-16 rounded-md'>
+            <div className='mb-10 min-[500px]:mb-14 sm:mb-16 md:mb-[72px] flex items-center justify-between bg-primary100 px-4 py-6 sm:p-8 lg:py-10 lg:px-10 xl:py-0 xl:px-16 rounded-md'>
                 <div className='flex flex-col items-start'>
                     <span className='py-0.5 px-1.5 sm:py-1 sm:px-2 lg:py-1.5 lg:px-3 text-white font-semibold bg-secondary500 rounded-sm text-[11px] sm:text-xs lg:text-sm uppercase'>save up to $200.00</span>
                     <h2 className='my-1.5 min-[400px]:my-2 sm:mt-3 sm:mb-3 xl:mb-5 text-gray900 font-medium text-xl min-[500px]:text-2xl sm:text-3xl lg:text-4xl xl:text-5xl'>Macbook Pro</h2>

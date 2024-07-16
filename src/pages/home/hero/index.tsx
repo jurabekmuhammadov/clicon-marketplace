@@ -1,12 +1,65 @@
-import { ArrowRight, CreditCard, Headset, Trophy, Truck } from 'lucide-react'
+"use client"
+import { ArrowRight, ChevronsUpDown, CreditCard, Headset, Info, PhoneCall, Repeat, ScrollText, Trophy, Truck } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import Carousel from './carousel'
+import Link from 'next/link'
+import { CATEGORIES } from '@/data/categories'
+import useHeaderStore from '@/store/header/headerStore'
 
 const Hero = () => {
+    const { isMenuOpen, isBlackFridayOpen } = useHeaderStore();
+
     return (
-        <section id='hero' className='mt-4 mb-10 sm:mt-8 sm:mb-20'>
-            <div className='grid grid-cols-4 lg:grid-cols-6 grid-rows-2 gap-3 sm:gap-4 md:gap-6'>
+        <section id='hero' className='mb-10 min-[500px]:mb-14 sm:mb-16 md:mb-[72px]'>
+            <div className={`min-[500px]:py-4 min-[500px]:border-b min-[500px]:border-gray200 bg-white mb-2 min-[500px]:mb-4`}>
+                <div className="container mx-auto px-[10px] flex items-center justify-between gap-4">
+                    <div className='flex items-center gap-6 w-full min-[640px]:w-auto'>
+                        <div className='relative hidden lg:block'>
+                            <select name="category" id="category" className='bg-gray100 py-2 px-4 outline-none rounded-sm appearance-none'>
+                                <option value="ALL">All Categories</option>
+                                {CATEGORIES.map((category) => (
+                                    <option key={category.id} value={category.name}>
+                                        {category.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <ChevronsUpDown className='absolute top-3 right-1 w-5 h-5' />
+                        </div>
+                        <ul className={`z-50 max-[500px]:shadow-lg ${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 ${isBlackFridayOpen ? "top-[173px] min-[400px]:top-[205px]" : "top-[125px] min-[400px]:top-[153px]"} max-[500px]:px-[10px] max-[500px]:py-4 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray100 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static`}>
+                            <li className=''>
+                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
+                                    <Info className='w-5 h-5 md:w-6 md:h-6' />
+                                    <span>About Us</span>
+                                </Link>
+                            </li>
+                            <li className='hidden min-[500px]:block'>
+                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
+                                    <Repeat className='w-5 h-5 md:w-6 md:h-6' />
+                                    <span>Compare</span>
+                                </Link>
+                            </li>
+                            <li className=''>
+                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
+                                    <Headset className='w-5 h-5 md:w-6 md:h-6' />
+                                    <span>Customer Support</span>
+                                </Link>
+                            </li>
+                            <li className=''>
+                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
+                                    <ScrollText className='w-5 h-5 md:w-6 md:h-6' />
+                                    <span>Blogs</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <Link href="tel:+998990990754" className='hidden min-[640px]:flex items-center gap-1 md:gap-2 text-sm md:text-base lg:text-xl text-gray900 hover:underline'>
+                        <PhoneCall className='w-5 h-5 md:w-6 md:h-6' />
+                        <span>+998-99-099-07-54</span>
+                    </Link>
+                </div>
+            </div>
+            <div className='container mx-auto px-[10px] grid grid-cols-4 lg:grid-cols-6 grid-rows-2 gap-3 sm:gap-4 md:gap-6'>
 
                 <div className="row-start-1 row-end-3 col-start-1 col-end-5">
                     <Carousel />
@@ -43,38 +96,38 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-
-            <div className='p-5 sm:p-8 border rounded-md border-gray100 mt-6 grid grid-cols-2 grid-rows-2 gap-6 sm:flex sm:items-center sm:justify-between sm:gap-4'>
-                <div className='flex items-center flex-col lg:flex-row gap-4'>
-                    <Truck className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
-                    <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
-                        <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>fasted delivery</h4>
-                        <span className='text-gray600 text-xs md:text-sm xl:text-base'>Delivery in 24/H</span>
+            <div className='container mx-auto px-[10px]'>
+                <div className='p-5 sm:p-8 border rounded-md border-gray100 mt-6 grid grid-cols-2 grid-rows-2 gap-6 sm:flex sm:items-center sm:justify-between sm:gap-4'>
+                    <div className='flex items-center flex-col lg:flex-row gap-4'>
+                        <Truck className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
+                        <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
+                            <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>fasted delivery</h4>
+                            <span className='text-gray600 text-xs md:text-sm xl:text-base'>Delivery in 24/H</span>
+                        </div>
                     </div>
-                </div>
-                <div className='flex items-center flex-col lg:flex-row gap-4'>
-                    <Trophy className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
-                    <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
-                        <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>24 hours return</h4>
-                        <span className='text-gray600 text-xs md:text-sm xl:text-base'>100% money-back guarantee</span>
+                    <div className='flex items-center flex-col lg:flex-row gap-4'>
+                        <Trophy className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
+                        <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
+                            <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>24 hours return</h4>
+                            <span className='text-gray600 text-xs md:text-sm xl:text-base'>100% money-back guarantee</span>
+                        </div>
                     </div>
-                </div>
-                <div className='flex items-center flex-col lg:flex-row gap-4'>
-                    <CreditCard className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
-                    <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
-                        <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>secure payment</h4>
-                        <span className='text-gray600 text-xs md:text-sm xl:text-base'>Your money is safe</span>
+                    <div className='flex items-center flex-col lg:flex-row gap-4'>
+                        <CreditCard className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
+                        <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
+                            <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>secure payment</h4>
+                            <span className='text-gray600 text-xs md:text-sm xl:text-base'>Your money is safe</span>
+                        </div>
                     </div>
-                </div>
-                <div className='flex items-center flex-col lg:flex-row gap-4'>
-                    <Headset className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
-                    <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
-                        <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>support 24/7</h4>
-                        <span className='text-gray600 text-xs md:text-sm xl:text-base'>Live contact/message</span>
+                    <div className='flex items-center flex-col lg:flex-row gap-4'>
+                        <Headset className='w-8 h-8 md:w-10 md:h-10 xl:w-11 xl:h-11' strokeWidth={1} />
+                        <div className='flex flex-col gap-0 min-[400px]:gap-1 text-center lg:text-start'>
+                            <h4 className='uppercase text-gray900 font-medium text-xs md:text-sm xl:text-base'>support 24/7</h4>
+                            <span className='text-gray600 text-xs md:text-sm xl:text-base'>Live contact/message</span>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </section>
     )
 }

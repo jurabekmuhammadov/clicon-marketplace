@@ -33,7 +33,7 @@ const BestDeals = () => {
   };
 
   return (
-    <section id="best-deals" className='flex flex-col gap-5 md:gap-8 mb-[72px]'>
+    <section id="best-deals" className='flex flex-col gap-5 md:gap-8 mb-10 min-[500px]:mb-14 sm:mb-16 md:mb-[72px]'>
 
       <div className='flex items-end min-[600px]:items-center justify-between'>
         <div className='flex min-[600px]:items-center flex-col min-[600px]:flex-row gap-1 min-[500px]:gap-2 min-[600px]:gap-4 md:gap-6'>

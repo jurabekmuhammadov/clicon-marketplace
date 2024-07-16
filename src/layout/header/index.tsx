@@ -3,41 +3,43 @@ import { CATEGORIES } from '@/data/categories';
 import { ArrowRight, ChevronsUpDown, Headset, Heart, Info, Menu, PhoneCall, Repeat, ScrollText, Search, ShoppingCart, User, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import { BiSearch, BiX } from 'react-icons/bi';
 import { BsFacebook, BsInstagram, BsTwitter, BsYoutube } from 'react-icons/bs';
 import moduleStyle from "./index.module.css"
+import useHeaderStore from '@/store/header/headerStore';
 
 const Header = () => {
-    const [isBlackFridayOpen, setisBlackFridayOpen] = useState(true);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { isBlackFridayOpen, isMenuOpen, setisBlackFridayOpen, setIsMenuOpen } = useHeaderStore();
     return (
         <header className=''>
-            <div id="black-friday" className={`z-50 bg-gray900 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
-                <div className="px-[10px] container mx-auto flex justify-between items-center relative">
-                    <Link href="/" className='flex items-center gap-3 justify-center w-14 h-7 min-[400px]:h-8 sm:w-16 sm:h-9 md:w-18 md:h-10'>
-                        <Image src="/icons/black.png" alt='BLACK FRIDAY' width={80} height={0} className='object-cover' />
-                    </Link>
+            <div className='fixed z-50 w-screen top-0'>
+                <div id="black-friday" className={`bg-gray900 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
+                    <div className="px-[10px] container mx-auto flex justify-between items-center relative">
+                        <Link href="/" className='flex items-center gap-3 justify-center w-14 h-7 min-[400px]:h-8 sm:w-16 sm:h-9 md:w-18 md:h-10'>
+                            <Image src="/icons/black.png" alt='BLACK FRIDAY' width={80} height={0} className='object-cover' />
+                        </Link>
 
-                    <div className='flex items-center gap-1'>
-                        <span className='text-white text-xs sm:text-sm lg:text-base font-semibold'>Up to</span>
-                        <span className='text-warning500 text-2xl min-[400px]:text-3xl sm:text-4xl lg:text-5xl font-semibold'>59%</span>
-                        <span className='text-white text-base sm:text-xl lg:text-2xl font-semibold'>OFF</span>
+                        <div className='flex items-center gap-1'>
+                            <span className='text-white text-xs sm:text-sm lg:text-base font-semibold'>Up to</span>
+                            <span className='text-warning500 text-2xl min-[400px]:text-3xl sm:text-4xl lg:text-5xl font-semibold'>59%</span>
+                            <span className='text-white text-base sm:text-xl lg:text-2xl font-semibold'>OFF</span>
+                        </div>
+                        <button className={`bg-warning500 flex items-center gap-2 justify-center rounded-sm md:gap-3 w-24 min-[400px]:w-28 sm:w-32 md:w-36 lg:w-40 h-7 min-[400px]:h-8 sm:h-9 md:h-10 transition hover:bg-warning300`}>
+                            <span className='text-gray900 text-[10px] min-[400px]:text-xs sm:text-sm lg:text-base font-semibold uppercase'>shop now</span>
+                            <ArrowRight className='w-4 h-4 md:w-5 md:h-5' />
+                        </button>
+                        <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='hidden xl:block absolute bg-gray700 bg-opacity-50 rounded-sm hover:bg-opacity-70 md:-right-10 2xl:-right-40 transition'>
+                            <BiX className='text-white w-6 h-6' /> { }
+                        </button>
                     </div>
-                    <button className={`bg-warning500 flex items-center gap-2 justify-center rounded-sm md:gap-3 w-24 min-[400px]:w-28 sm:w-32 md:w-36 lg:w-40 h-7 min-[400px]:h-8 sm:h-9 md:h-10 transition hover:bg-warning300`}>
-                        <span className='text-gray900 text-[10px] min-[400px]:text-xs sm:text-sm lg:text-base font-semibold uppercase'>shop now</span>
-                        <ArrowRight className='w-4 h-4 md:w-5 md:h-5' />
-                    </button>
-                    <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='hidden xl:block absolute bg-gray700 bg-opacity-50 rounded-sm hover:bg-opacity-70 md:-right-10 2xl:-right-40 transition'>
-                        <BiX className='text-white w-6 h-6' /> { }
+                    <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center xl:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
+                        <BiX className='text-white w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 sm:w-7 sm:h-7' /> { }
                     </button>
                 </div>
-                <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center xl:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
-                    <BiX className='text-white w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 sm:w-7 sm:h-7' /> { }
-                </button>
             </div>
 
-            <div className='bg-secondary700 z-50'>
+            <div className={`bg-secondary700 z-40 fixed w-screen ${isBlackFridayOpen ? "top-[48px] min-[400px]:top-[52px] sm:top-[56px] md:top-[64px] lg:top-[72px]" : "top-0"}`}>
                 <div className='border-b border-gray400'>
                     <div className="px-[10px] container mx-auto flex flex-col gap-4 md:flex-row md:justify-between items-center py-2 min-[400px]:py-3 md:py-4">
                         <span className='text-white text-sm min-[400px]:text-base'>Welcome to Clicon Online Marketplace!</span>
@@ -96,14 +98,14 @@ const Header = () => {
                             <span className={`${moduleStyle.buttonText} text-gray500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Search</span>
                         </button>
                         <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 `}>
-                            <ShoppingCart className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray500 min-[500px]:text-white`} />
-                            {/* <span className='absolute -top-2 -right-2 border min-[400px]:border-2 border-gray500 min-[500px]:border-secondary700 rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary500'>2</span> */}
-                            <span className={`${moduleStyle.buttonText} text-gray500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Cart</span>
-                        </button>
-                        <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 `}>
                             <Heart className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray500 min-[500px]:text-white`} />
                             {/* <span className='absolute -top-2 -right-2 border min-[400px]:border-2 border-gray500 min-[500px]:border-secondary700 rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary500'>2</span> */}
                             <span className={`${moduleStyle.buttonText} text-gray500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Wishlist</span>
+                        </button>
+                        <button className={`${moduleStyle.buttonHover} relative flex flex-col items-center max-[500px]:gap-1 `}>
+                            <ShoppingCart className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray500 min-[500px]:text-white`} />
+                            {/* <span className='absolute -top-2 -right-2 border min-[400px]:border-2 border-gray500 min-[500px]:border-secondary700 rounded-full bg-white w-4 h-4 min-[400px]:w-5 min-[400px]:h-5 lg:w-6 lg:h-6 flex items-center justify-center text-xs min-[400px]:text-sm font-bold text-primary500'>2</span> */}
+                            <span className={`${moduleStyle.buttonText} text-gray500 text-xs min-[400px]:text-sm hidden max-[500px]:block`}>Cart</span>
                         </button>
                         <button className={`${moduleStyle.buttonHover} min-[500px]:hidden flex flex-col items-center max-[500px]:gap-1`}>
                             <Repeat className={`${moduleStyle.buttonIcon} w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 min-[500px]:w-5 min-[500px]:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray500 min-[500px]:text-white`} />
@@ -123,54 +125,6 @@ const Header = () => {
                             <Menu className='w-7 h-7 text-white' />
                         )}
                     </button>
-                </div>
-            </div>
-
-            <div className='min-[500px]:py-4 min-[500px]:border-b min-[500px]:border-gray200 z-50'>
-                <div className="px-[10px] container mx-auto flex items-center justify-between gap-4">
-                    <div className='flex items-center gap-6 w-full min-[640px]:w-auto'>
-                        <div className='relative hidden lg:block'>
-                            <select name="category" id="category" className='bg-gray100 py-2 px-4 outline-none rounded-sm appearance-none'>
-                                <option value="ALL">All Categories</option>
-                                {CATEGORIES.map((category) => (
-                                    <option key={category.id} value={category.name}>
-                                        {category.name}
-                                    </option>
-                                ))}
-                            </select>
-                            <ChevronsUpDown className='absolute top-3 right-1 w-5 h-5' />
-                        </div>
-                        <ul className={`z-10 ${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 top-[173px] min-[400px]:top-[205px] max-[500px]:px-[10px] max-[500px]:py-4 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray100 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static`}>
-                            <li className=''>
-                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
-                                    <Info className='w-5 h-5 md:w-6 md:h-6' />
-                                    <span>About Us</span>
-                                </Link>
-                            </li>
-                            <li className='hidden min-[500px]:block'>
-                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
-                                    <Repeat className='w-5 h-5 md:w-6 md:h-6' />
-                                    <span>Compare</span>
-                                </Link>
-                            </li>
-                            <li className=''>
-                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
-                                    <Headset className='w-5 h-5 md:w-6 md:h-6' />
-                                    <span>Customer Support</span>
-                                </Link>
-                            </li>
-                            <li className=''>
-                                <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
-                                    <ScrollText className='w-5 h-5 md:w-6 md:h-6' />
-                                    <span>Blogs</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <Link href="tel:+998990990754" className='hidden min-[640px]:flex items-center gap-1 md:gap-2 text-sm md:text-base lg:text-xl text-gray900 hover:underline'>
-                        <PhoneCall className='w-5 h-5 md:w-6 md:h-6' />
-                        <span>+998-99-099-07-54</span>
-                    </Link>
                 </div>
             </div>
         </header >

@@ -32,9 +32,9 @@ const FeaturedProducts = () => {
     };
 
     return (
-        <section id='featured-products' className='mb-[72px]'>
-            <div className='flex flex-col 2xl:flex-row justify-start gap-6 mb-[72px]'>
-                <div className="flex flex-row 2xl:flex-col items-center justify-between 2xl:bg-warning300 rounded-md max-[500px]:px-3 max-[500px]:py-4 max-lg:p-6 max-xl:p-8 max-2xl:p-16 2xl:pt-8 2xl:w-1/5 bg-[url('/discount-for-comp-acc-2.png')] lg:bg-[url('/discount-for-comp-acc.png')] bg-no-repeat bg-cover bg-right-bottom min-[500px]:bg-left-bottom lg:bg-left 2xl:bg-none">
+        <section id='featured-products' className='mb-10 min-[500px]:mb-14 sm:mb-16 md:mb-[72px]'>
+            <div className='flex flex-col 2xl:flex-row justify-start gap-6 mb-10 min-[500px]:mb-14 sm:mb-16 md:mb-[72px]'>
+                <div className="flex flex-row 2xl:flex-col items-center justify-between 2xl:bg-warning300 rounded-md max-[500px]:px-3 max-[500px]:py-4 max-lg:p-6 max-xl:p-8 max-2xl:p-16 2xl:pt-8 2xl:w-1/5 bg-[url('/discount-for-comp-acc-2.png')] lg:bg-[url('/discount-for-comp-acc-1.png')] bg-no-repeat bg-cover bg-right-bottom min-[500px]:bg-left-bottom lg:bg-left 2xl:bg-none">
                     <div className='flex flex-col items-start 2xl:items-center'>
                         <span className='text-danger600 font-semibold uppercase text-[11px] min-[500px]:text-xs lg:text-sm'>computer & accessories</span>
                         <h3 className='text-gray900 text-xl min-[500px]:text-2xl lg:text-3xl xl:text-5xl 2xl:text-3xl font-semibold my-1 min-[500px]:mt-1 min-[500px]:mb-2 lg:mt-2 lg:mb-3 xl:my-3 2xl:mt-2 2xl:mb-3'>32% <span className='text-xl min-[500px]:text-2xl lg:text-3xl'>Discount</span></h3>
