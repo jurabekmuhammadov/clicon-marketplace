@@ -26,7 +26,7 @@ const Hero = () => {
                             </select>
                             <ChevronsUpDown className='absolute top-3 right-1 w-5 h-5' />
                         </div>
-                        <ul className={`z-50 max-[500px]:shadow-lg ${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 ${isBlackFridayOpen ? "top-[173px] min-[400px]:top-[205px]" : "top-[125px] min-[400px]:top-[153px]"} max-[500px]:px-[10px] max-[500px]:py-4 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray100 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static`}>
+                        <ul className={`z-20 max-[500px]:shadow-lg ${isMenuOpen ? "max-[500px]:flex" : "max-[500px]:hidden"} fixed left-0 right-0 ${isBlackFridayOpen ? "top-[173px] min-[400px]:top-[205px]" : "top-[125px] min-[400px]:top-[153px]"} max-[500px]:px-[10px] max-[500px]:py-4 w-screen bg-white max-[500px]:border-b max-[500px]:border-gray100 max-[500px]:flex-col items-start min-[500px]:items-center justify-evenly flex flex-row gap-4 md:gap-6 min-[500px]:w-full min-[640px]:w-auto min-[500px]:static`}>
                             <li className=''>
                                 <Link href="/" className='flex items-center gap-1 md:gap-2 text-sm md:text-base text-gray600 font-medium transition hover:text-primary500'>
                                     <Info className='w-5 h-5 md:w-6 md:h-6' />

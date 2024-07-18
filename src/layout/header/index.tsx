@@ -1,19 +1,48 @@
 "use client"
-import { CATEGORIES } from '@/data/categories';
-import { ArrowRight, ChevronsUpDown, Headset, Heart, Info, Menu, PhoneCall, Repeat, ScrollText, Search, ShoppingCart, User, X } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { useHeaderStore } from '@/store/store';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import { calculateDiscountedPrice } from '@/functions/discounted-price';
+import { ArrowRight, Heart, Menu, Repeat, Search, ShoppingCart, User, X } from 'lucide-react';
 import { BiSearch, BiX } from 'react-icons/bi';
 import { BsFacebook, BsInstagram, BsTwitter, BsYoutube } from 'react-icons/bs';
 import moduleStyle from "./index.module.css"
-import useHeaderStore from '@/store/header/headerStore';
 
 const Header = () => {
-    const { isBlackFridayOpen, isMenuOpen, setisBlackFridayOpen, setIsMenuOpen } = useHeaderStore();
+    const {
+        isBlackFridayOpen,
+        isMenuOpen,
+        searchValue,
+        results,
+        searchProducts,
+        setSearchValue,
+        setisBlackFridayOpen,
+        setIsMenuOpen,
+        fetchProducts,
+        clearResults
+    } = useHeaderStore();
+
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts]);
+
+    useEffect(() => {
+        if (results.length > 0) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }, [results]);
+
+    const handleSearchSubmit = (e: any) => {
+        e.preventDefault();
+        searchProducts();
+    };
+
     return (
         <header className=''>
-            <div className='fixed z-50 w-screen top-0'>
+            <div className='fixed z-40 w-screen top-0'>
                 <div id="black-friday" className={`bg-gray900 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
                     <div className="px-[10px] container mx-auto flex justify-between items-center relative">
                         <Link href="/" className='flex items-center gap-3 justify-center w-14 h-7 min-[400px]:h-8 sm:w-16 sm:h-9 md:w-18 md:h-10'>
@@ -38,8 +67,7 @@ const Header = () => {
                     </button>
                 </div>
             </div>
-
-            <div className={`bg-secondary700 z-40 fixed w-screen ${isBlackFridayOpen ? "top-[48px] min-[400px]:top-[52px] sm:top-[56px] md:top-[64px] lg:top-[72px]" : "top-0"}`}>
+            <div className={`bg-secondary700 z-30 fixed w-screen ${isBlackFridayOpen ? "top-[48px] min-[400px]:top-[52px] sm:top-[56px] md:top-[64px] lg:top-[72px]" : "top-0"}`}>
                 <div className='border-b border-gray400'>
                     <div className="px-[10px] container mx-auto flex flex-col gap-4 md:flex-row md:justify-between items-center py-2 min-[400px]:py-3 md:py-4">
                         <span className='text-white text-sm min-[400px]:text-base'>Welcome to Clicon Online Marketplace!</span>
@@ -84,8 +112,8 @@ const Header = () => {
                         <span className='uppercase text-white font-bold text-xl min-[400px]:text-2xl md:text-3xl lg:text-4xl'>clicon</span>
                     </Link>
 
-                    <form className='hidden min-[500px]:flex items-center relative w-1/2'>
-                        <input type="text" placeholder='Search for anything...' className='py-1.5 px-3 md:py-2 md:px-4 lg:py-3 lg:px-5 w-full outline-none rounded-md border-2 border-white focus:border-2 focus:border-primary500 text-sm md:text-base' />
+                    <form onSubmit={handleSearchSubmit} className={`${moduleStyle.searchInput} hidden min-[500px]:flex items-center relative w-1/2`}>
+                        <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text" placeholder='Search for anything...' className='py-1.5 px-3 md:py-2 md:px-4 lg:py-3 lg:px-5 w-full outline-none rounded-md border-2 border-white focus:border-2 focus:border-primary500 text-sm md:text-base' />
                         <button type='submit' className='flex items-center justify-center bg-primary500 p-0.5 lg:p-1 rounded-md text-white absolute right-2 md:right-3 lg:right-4 transition'>
                             { }
                             <BiSearch className='w-5 h-5 lg:w-6 lg:h-6 ' />
@@ -127,6 +155,46 @@ const Header = () => {
                     </button>
                 </div>
             </div>
+
+            {results.length > 0 && (
+                <div className='max-[500px]:hidden overflow-y-auto fixed z-50 bg-black bg-opacity-40 backdrop-blur-md h-screen w-screen top-0'>
+                    <div className="relative">
+                        <div className='w-5/6 md:w-3/4 lg:w-1/2 mx-auto py-4 flex flex-col items-start md:items-end gap-4'>
+                            <div className='bg-white px-1 flex items-center justify-between'>
+                                <h2 className='text-base md:text-xl font-medium text-primary500'>{results.length} Results found</h2>
+                            </div>
+                            <div className='flex flex-col gap-4'>
+                                {results.map(product => (
+                                    <Link href={"/"} className='flex items-center gap-4 px-5 py-4 bg-white rounded-md' key={`${product.id} - ${Math.random()}`}>
+                                        <Image src={product.images[0]} alt={product.name} width={100} height={100} className='w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 object-contain' />
+                                        <div className=''>
+                                            <div className='flex items-center gap-2'>
+                                                <h3 className='line-clamp-1 sm:line-clamp-none text-gray900 font-medium text-sm md:text-base lg:text-lg'>{product.name}</h3>
+                                                {product.discount ? (
+                                                    <span className='py-0.5 px-1.5 md:px-2 md:py-1 bg-warning500 rounded-md text-xs font-medium text-gray900 uppercase'>{product.discount}% off</span>
+                                                ) : null}
+                                            </div>
+                                            <p className='line-clamp-1 text-gray600 mt-1 md:mt-0 text-xs md:text-sm lg:text-base'>{product.description}</p>
+                                            <div className='flex items-center gap-2 mt-2'>
+                                                {product.discount ? (
+                                                    <div>
+                                                        <span className='text-gray500 line-through font-medium text-sm md:text-base'>{product.price}</span>
+                                                    </div>
+                                                ) : null}
+                                                <span className='text-secondary500 font-medium text-sm md:text-base'>${calculateDiscountedPrice(product.price, product.discount)}</span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                        <button onClick={clearResults} className='text-white absolute top-4 right-14 md:right-10 flex items-center justify-center transition hover:text-gray200'>
+                            { }
+                            <X className='w-8 h-8 md:w-10 md:h-10' />
+                        </button>
+                    </div>
+                </div>
+            )}
         </header >
     );
 };

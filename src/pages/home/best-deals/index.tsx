@@ -220,7 +220,7 @@ const BestDeals = () => {
                     </li>
                   </ul>
 
-                  <p className='text-gray500 mt-3'>
+                  <p className='text-gray500 mt-3 line-clamp-4'>
                     {product.description}
                   </p>
 

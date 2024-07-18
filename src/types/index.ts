@@ -21,3 +21,17 @@ export type Categories = {
 export type Brands = {
     name: string;
 }
+
+export type HeaderStore = {
+    isBlackFridayOpen: boolean;
+    isMenuOpen: boolean;
+    setisBlackFridayOpen: (isOpen: boolean) => void;
+    setIsMenuOpen: (isOpen: boolean) => void;
+    searchValue: string;
+    allProducts: Product[];
+    results: Product[];
+    setSearchValue: (value: string) => void;
+    fetchProducts: () => Promise<void>;
+    searchProducts: () => void;
+    clearResults: () => void
+}
