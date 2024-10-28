@@ -13,6 +13,7 @@ export type Product = {
     discount: number;
     best_deal: boolean;
 }
+
 export type Categories = {
     id: number;
     name: string;
@@ -25,7 +26,7 @@ export type Brands = {
 export type HeaderStore = {
     isBlackFridayOpen: boolean;
     isMenuOpen: boolean;
-    setisBlackFridayOpen: (isOpen: boolean) => void;
+    setIsBlackFridayOpen: (isOpen: boolean) => void;
     setIsMenuOpen: (isOpen: boolean) => void;
     searchValue: string;
     allProducts: Product[];

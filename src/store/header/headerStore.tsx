@@ -9,9 +9,10 @@ const useHeaderStore = create<HeaderStore>((set, get) => ({
     allProducts: [],
     results: [],
 
-    setisBlackFridayOpen: (isOpen: boolean) => set({ isBlackFridayOpen: isOpen }),
+    setIsBlackFridayOpen: (isOpen: boolean) => set({ isBlackFridayOpen: isOpen }),
     setIsMenuOpen: (isOpen: boolean) => set({ isMenuOpen: isOpen }),
     setSearchValue: (value: string) => { set({ searchValue: value }) },
+
     fetchProducts: async () => {
         try {
             const response = await axios.get("/api/products");
@@ -35,6 +36,7 @@ const useHeaderStore = create<HeaderStore>((set, get) => ({
             set({ results: [] })
         }
     },
+
     clearResults: () => set({ results: [], searchValue: "" })
 }));
 

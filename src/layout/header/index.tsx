@@ -1,10 +1,10 @@
 "use client"
 import React, { useEffect } from 'react';
-import { useHeaderStore } from '@/store/store';
+import {useHeaderStore} from '@/store/store';
 import Image from 'next/image';
 import Link from 'next/link';
 import { calculateDiscountedPrice } from '@/functions/discounted-price';
-import { ArrowRight, Heart, Menu, Repeat, Search, ShoppingCart, User, X } from 'lucide-react';
+import { ArrowRight, ChevronLeft, Heart, Menu, Repeat, Search, ShoppingCart, User, X } from 'lucide-react';
 import { BiSearch, BiX } from 'react-icons/bi';
 import { BsFacebook, BsInstagram, BsTwitter, BsYoutube } from 'react-icons/bs';
 import moduleStyle from "./index.module.css"
@@ -13,27 +13,19 @@ const Header = () => {
     const {
         isBlackFridayOpen,
         isMenuOpen,
-        searchValue,
-        results,
-        searchProducts,
-        setSearchValue,
-        setisBlackFridayOpen,
+        setIsBlackFridayOpen,
         setIsMenuOpen,
+        searchProducts,
+        searchValue,
+        setSearchValue,
         fetchProducts,
+        results,
         clearResults
     } = useHeaderStore();
 
     useEffect(() => {
         fetchProducts();
     }, [fetchProducts]);
-
-    useEffect(() => {
-        if (results.length > 0) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
-    }, [results]);
 
     const handleSearchSubmit = (e: any) => {
         e.preventDefault();
@@ -42,6 +34,7 @@ const Header = () => {
 
     return (
         <header className=''>
+            {/* ----- Black Friday Start -----  */}
             <div className='fixed z-40 w-screen top-0'>
                 <div id="black-friday" className={`bg-gray900 py-2 md:py-3 relative ${isBlackFridayOpen ? "block" : "hidden"}`}>
                     <div className="px-[10px] container mx-auto flex justify-between items-center relative">
@@ -58,16 +51,22 @@ const Header = () => {
                             <span className='text-gray900 text-[10px] min-[400px]:text-xs sm:text-sm lg:text-base font-semibold uppercase'>shop now</span>
                             <ArrowRight className='w-4 h-4 md:w-5 md:h-5' />
                         </button>
-                        <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='hidden xl:block absolute bg-gray700 bg-opacity-50 rounded-sm hover:bg-opacity-70 md:-right-10 2xl:-right-40 transition'>
+                        <button onClick={() => setIsBlackFridayOpen(!isBlackFridayOpen)} className='hidden xl:block absolute bg-gray700 bg-opacity-50 rounded-sm hover:bg-opacity-70 md:-right-10 2xl:-right-40 transition'>
                             <BiX className='text-white w-6 h-6' /> { }
                         </button>
                     </div>
-                    <button onClick={() => setisBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center xl:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
+                    <button onClick={() => setIsBlackFridayOpen(!isBlackFridayOpen)} className='flex items-center justify-center xl:hidden absolute bg-black bg-opacity-70 transition hover:bg-opacity-60 -bottom-5 min-[400px]:-bottom-6 sm:-bottom-7 right-0'>
                         <BiX className='text-white w-5 h-5 min-[400px]:w-6 min-[400px]:h-6 sm:w-7 sm:h-7' /> { }
                     </button>
                 </div>
             </div>
+            {/* ----- Black Friday End -----  */}
+
+            {/* ----- Main Header Start ----- */}
+
             <div className={`bg-secondary700 z-30 fixed w-screen ${isBlackFridayOpen ? "top-[48px] min-[400px]:top-[52px] sm:top-[56px] md:top-[64px] lg:top-[72px]" : "top-0"}`}>
+
+                {/* ----- Header Top Start ----- */}
                 <div className='border-b border-gray400'>
                     <div className="px-[10px] container mx-auto flex flex-col gap-4 md:flex-row md:justify-between items-center py-2 min-[400px]:py-3 md:py-4">
                         <span className='text-white text-sm min-[400px]:text-base'>Welcome to Clicon Online Marketplace!</span>
@@ -104,6 +103,9 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+                {/* ----- Header Top End ----- */}
+
+                {/* ----- Header Bottom Start ----- */}
                 <div className='px-[10px] container mx-auto flex items-center justify-between py-3 min-[400px]:py-4 gap-4'>
                     <Link href="/" className='flex items-center gap-2'>
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-7 h-7 min-[400px]:w-8 min-[400px]:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12'>
@@ -112,7 +114,7 @@ const Header = () => {
                         <span className='uppercase text-white font-bold text-xl min-[400px]:text-2xl md:text-3xl lg:text-4xl'>clicon</span>
                     </Link>
 
-                    <form onSubmit={handleSearchSubmit} className={`${moduleStyle.searchInput} hidden min-[500px]:flex items-center relative w-1/2`}>
+                    <form onSubmit={handleSearchSubmit} className={`hidden min-[500px]:flex items-center relative w-1/2`}>
                         <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text" placeholder='Search for anything...' className='py-1.5 px-3 md:py-2 md:px-4 lg:py-3 lg:px-5 w-full outline-none rounded-md border-2 border-white focus:border-2 focus:border-primary500 text-sm md:text-base' />
                         <button type='submit' className='flex items-center justify-center bg-primary500 p-0.5 lg:p-1 rounded-md text-white absolute right-2 md:right-3 lg:right-4 transition'>
                             { }
@@ -154,47 +156,52 @@ const Header = () => {
                         )}
                     </button>
                 </div>
-            </div>
+                {/* ----- Header Bottom End ----- */}
 
-            {results.length > 0 && (
-                <div className='max-[500px]:hidden overflow-y-auto fixed z-50 bg-black bg-opacity-40 backdrop-blur-md h-screen w-screen top-0'>
-                    <div className="relative">
-                        <div className='w-5/6 md:w-3/4 lg:w-1/2 mx-auto py-4 flex flex-col items-start md:items-end gap-4'>
-                            <div className='bg-white px-1 flex items-center justify-between'>
-                                <h2 className='text-base md:text-xl font-medium text-primary500'>{results.length} Results found</h2>
+            </div>  
+
+            {/* ----- Main Header End ----- */}
+
+            {/* Search Results Start */}
+                {results.length > 0 && (
+                    <div className="p-[10px] min-[430px]:p-3 md:p-5 fixed inset-0 z-50 bg-gray-200 h-full w-full overflow-y-scroll">
+                        <div className="container mx-auto">
+                            <div className='flex justify-between items-center'>
+                            <h1 className='text-xl sm:text-2xl font-semibold text-primary500'>Search results ({results.length})</h1>
+                            <button onClick={clearResults} className='flex items-center text-danger500 text-lg sm:text-xl'>
+                                <ChevronLeft className='h-6 w-6 sm:h-7 sm:w-7'/>
+                                <span>Back <span className='hidden min-[420px]:inline-block'>to Home</span></span>
+                            </button>
                             </div>
-                            <div className='flex flex-col gap-4'>
-                                {results.map(product => (
-                                    <Link href={"/"} className='flex items-center gap-4 px-5 py-4 bg-white rounded-md' key={`${product.id} - ${Math.random()}`}>
-                                        <Image src={product.images[0]} alt={product.name} width={100} height={100} className='w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 object-contain' />
-                                        <div className=''>
-                                            <div className='flex items-center gap-2'>
-                                                <h3 className='line-clamp-1 sm:line-clamp-none text-gray900 font-medium text-sm md:text-base lg:text-lg'>{product.name}</h3>
-                                                {product.discount ? (
-                                                    <span className='py-0.5 px-1.5 md:px-2 md:py-1 bg-warning500 rounded-md text-xs font-medium text-gray900 uppercase'>{product.discount}% off</span>
-                                                ) : null}
-                                            </div>
-                                            <p className='line-clamp-1 text-gray600 mt-1 md:mt-0 text-xs md:text-sm lg:text-base'>{product.description}</p>
-                                            <div className='flex items-center gap-2 mt-2'>
-                                                {product.discount ? (
-                                                    <div>
-                                                        <span className='text-gray500 line-through font-medium text-sm md:text-base'>{product.price}</span>
-                                                    </div>
-                                                ) : null}
-                                                <span className='text-secondary500 font-medium text-sm md:text-base'>${calculateDiscountedPrice(product.price, product.discount)}</span>
-                                            </div>
+                            <div className='mt-2 sm:mt-3 flex flex-col gap-2 sm:gap-3'>
+                            {results.map(product => (
+                                <Link href={`/products/${product.id}`} className='flex items-center gap-4 py-2 px-3 sm:px-5 sm:py-4 bg-white rounded-md' key={product.id}>
+                                    <Image src={product.images[0]} alt={product.name} width={100} height={100} className='w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 object-contain' />
+                                    <div className=''>
+                                        <div className='flex items-center gap-2'>
+                                            <h3 className='line-clamp-1 sm:line-clamp-none text-gray900 font-medium text-sm md:text-base lg:text-lg'>{product.name}</h3>
+                                            {product.discount ? (
+                                                <span className='hidden min-[420px]:block py-0.5 px-1.5 md:px-2 md:py-1 bg-warning500 rounded-md text-xs font-medium text-gray900 uppercase'>{product.discount}% off</span>
+                                            ) : null}
                                         </div>
-                                    </Link>
-                                ))}
+                                        <p className='line-clamp-1 text-gray600 mt-1 md:mt-0 text-xs md:text-sm lg:text-base'>{product.description}</p>
+                                        <div className='flex items-center gap-2 mt-2'>
+                                            {product.discount ? (
+                                                <span className='text-gray500 line-through font-medium text-sm md:text-base'>{product.price}</span>
+                                            ) : null}
+                                            <span className='text-secondary500 font-medium text-sm md:text-base'>${calculateDiscountedPrice(product.price, product.discount)}</span>
+                                            {product.discount ? (
+                                                <span className='block min-[420px]:hidden    py-0.5 px-1.5 md:px-2 md:py-1 bg-warning500 rounded-md text-xs font-medium text-gray900 uppercase'>{product.discount}% off</span>
+                                            ) : null}
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
                             </div>
                         </div>
-                        <button onClick={clearResults} className='text-white absolute top-4 right-14 md:right-10 flex items-center justify-center transition hover:text-gray200'>
-                            { }
-                            <X className='w-8 h-8 md:w-10 md:h-10' />
-                        </button>
                     </div>
-                </div>
-            )}
+                )}
+            {/* Search Results End */}
         </header >
     );
 };
